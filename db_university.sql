@@ -11,7 +11,7 @@ WHERE cfu > 10
 --3. Selezionare tutti gli studenti che hanno più di 30 anni(3646)
 SELECT * 
 FROM students 
-WHERE YEAR(CURDATE()) - YEAR(date_of_birth) > 30;
+WHERE YEAR(CURDATE()) - YEAR(date_of_birth) > 30;--da mettere >=? così comprende anche chi ha già compiuto(3779)
 
 --4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di laurea (286)
 SELECT * 
@@ -51,3 +51,24 @@ WHERE name='Pietro' AND surname = 'Rizzo';
 --11 Eliminare dalla tabella studenti il record creato precedentemente al punto 9
 DELETE FROM students 
 WHERE name = 'Nazeem' AND surname = 'Reth';
+
+--12 Selezionare tutti gli esami (appelli) con data nel futuro
+SELECT * 
+FROM exams 
+WHERE date > CURDATE();
+
+--13 Trovare tutti i corsi che iniziano con la lettera 'P'
+SELECT * 
+FROM courses 
+WHERE name LIKE 'P%';
+
+--14 Selezionare tutti gli studenti e ordinare per la data di nascita in ordine decrescente
+SELECT * 
+FROM students 
+ORDER BY date_of_birth DESC;
+
+
+--15 elimina possibili esami inseriti durante le feste invernali
+DELETE 
+FROM `exams` 
+WHERE date BETWEEN '2020-12-21' AND '2021-01-06';
