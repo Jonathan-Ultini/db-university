@@ -29,3 +29,25 @@ AND HOUR(hour) >= 14;
 SELECT * 
 FROM `degrees` 
 WHERE level = 'magistrale';
+
+--7. Da quanti dipartimenti è composta l'università? (12)
+SELECT COUNT(*) 
+FROM `departments`;
+
+--8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
+SELECT COUNT(*) 
+FROM `teachers` 
+WHERE phone IS NOT NULL;
+
+--9. Inserire nella tabella degli studenti un nuovo record con i propri dati (per il campo degree_id, inserire un valore casuale)
+INSERT 
+INTO students (name, surname, email, date_of_birth, degree_id, enrolment_date, registration_number, fiscal_code)
+VALUES ('Nazeem', 'Reth', 'cross@gmail.com','6-12-25', 7, '2024-06-26', 'vinpan', 'stalla3magia');
+
+--10. Cambiare il numero dell’ufficio del professor Pietro Rizzo in 126
+UPDATE `teachers` SET office_number=126
+WHERE name='Pietro' AND surname = 'Rizzo';
+
+--11 Eliminare dalla tabella studenti il record creato precedentemente al punto 9
+DELETE FROM students 
+WHERE name = 'Nazeem' AND surname = 'Reth';
